@@ -1,0 +1,17 @@
+#  Plone uses GPL version 2 as its license. As of summer 2009, there are
+#  no active plans to upgrade to GPL version 3.
+#  You may obtain a copy of the License at
+#
+#       http://www.gnu.org
+#
+
+Format: 1.0
+Type: Application
+FullName: io.murano.apps.plone.PloneServer
+Name: Plone CMS
+Description: |
+ The Ultimate Open Source Enterprise CMS.
+Author: 'Evgeniy Mashkin'
+Tags: [CMS, WCM]
+Classes:
+ io.murano.apps.plone.PloneServer: PloneServer.yaml
