@@ -14,7 +14,9 @@
 PL_PATH="$1"
 PL_PASS="$2"
 PL_PORT="$3"
-exec &> /tmp/PloneInstallation.log
+
+# Redirect stdout & stderr into log file:
+exec &> /tmp/runPloneDeploy.log
 
 echo "Hello world. Starting Pl one installation."
 echo "Current directory - "`cd "$( dirname "$0" )" && pwd`
@@ -36,12 +38,16 @@ wget --no-check-certificate https://launchpad.net/plone/5.0/5.0.4/+download/Plon
 tar -xvf Plone-5.0.4-UnifiedInstaller.tgz && echo "Tgz unarchieved."
 cd Plone-5.0.4-UnifiedInstaller
 
+# Set the port that Plone will listen to on available network interfaces. Editing "http-address" param in buildout.cfg file:
+sed -i "s/^http-address = [0-9]*$/http-address = ${PL_PORT}/" buildout_templates/buildout.cfg
+
 # Run the Plone installer in standalone mode
-./install.sh --password="PL_PASS" --instance="test_instance" standalone
+./install.sh --password="${PL_PASS}" --target="${PL_PATH}" standalone
 
 echo "Starting up Plone."
 # Start Plone
-cd /opt/plone/test_instance/
+echo "${PL_PATH}/zinstance"
+cd "${PL_PATH}/zinstance"
 bin/plonectl start
 echo "Plone started."
 

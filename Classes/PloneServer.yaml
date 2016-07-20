@@ -25,15 +25,12 @@ Properties:
 
   pathname:
     Contract: $.string()
-    default: "/opt/plone"
 
   password:
     Contract: $.string()
-    default: 'admin'
 
   port:
     Contract: $.string()
-    default: '8080'
 
 Methods:
   initialize:
