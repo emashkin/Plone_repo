@@ -14,7 +14,7 @@ Application:
   pathname: $.appConfiguration.pathname
   password: $.appConfiguration.password
   port: $.appConfiguration.port
-#  enablePHP: $.appConfiguration.enablePHP
+
   instance:
     ?:
       type: io.murano.resources.LinuxMuranoInstance
@@ -88,16 +88,25 @@ Forms:
           description: >-
             Select registered in Openstack flavor. Consider that application performance
             depends on this parameter.
-            
-            Minumum requirements:
-                Minimum 256 MB RAM and 512 MB of swap space per Plone site.
-                Minimum 512 MB hard disk space.
-            Recommended:
-              2 GB or more RAM per Plone site.
-              40 GB or more hard disk space.
           requirements:
             min_vcpus: 1
             min_memory_mb: 256
+          required: false
+        - name: minrequirements
+          type: string
+          label: Minumum requirements
+          description: |
+            Minimum 256 MB RAM and 512 MB of swap space per Plone site
+            Minimum 512 MB hard disk space
+          hidden: true
+          required: false
+        - name: recrequirements
+          type: string
+          label: Recommended
+          description: |  
+            2 GB or more RAM per Plone site
+            40 GB or more hard disk space
+          hidden: true
           required: false
         - name: osImage
           type: image
