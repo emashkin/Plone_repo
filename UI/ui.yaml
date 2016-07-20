@@ -12,6 +12,8 @@ Application:
     type: io.murano.apps.plone.PloneServer
   name: $.appConfiguration.name
   pathname: $.appConfiguration.pathname
+  password: $.appConfiguration.password
+  port: $.appConfiguration.port
 #  enablePHP: $.appConfiguration.enablePHP
   instance:
     ?:
@@ -42,8 +44,23 @@ Forms:
           type: string
           label: Installation pathname
           required: false
+          initial: '/opt/plone'
           description: >-
             Enter a pathname to install Plone
+        - name: password
+          type: string
+          label: Admin password
+          required: false
+          initial: 'admin'
+          description: >-
+            Enter password for Plone Admin
+        - name: port
+          type: string
+          label: Port
+          required: false
+          initial: '8080'
+          description: >-
+            Enter password for Plone Admin
 #        - name: enablePHP
 #          label: Enable PHP
 #          type: boolean

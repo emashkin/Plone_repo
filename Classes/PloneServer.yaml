@@ -20,11 +20,20 @@ Properties:
   name:
     Contract: $.string().notNull()
 
-  pathname:
-    Contract: $.string()
-
   instance:
     Contract: $.class(res:Instance).notNull()
+
+  pathname:
+    Contract: $.string()
+    default: "/opt/plone"
+
+  password:
+    Contract: $.string()
+    default: 'admin'
+
+  port:
+    Contract: $.string()
+    default: '8080'
 
 Methods:
   initialize:
@@ -45,10 +54,18 @@ Methods:
               FromPort: 443
               IpProtocol: tcp
               External: true
+            - ToPort: 8080
+              FromPort: 8080
+              IpProtocol: tcp
+              External: true  
           - $._environment.securityGroupManager.addGroupIngress($securityGroupIngress)
           - $.instance.deploy()
           - $resources: new(sys:Resources)
-          - $template: $resources.yaml('DeployPloneServer.template').bind(dict(pathname => $.pathname))
+          - $template: $resources.yaml('DeployPloneServer.template').bind(dict(
+                pathname => $.pathname,
+                password => $.password,
+                port => $.port
+              ))
           - $._environment.reporter.report($this, 'Instance is created. Deploying Plone')
           - $.instance.agent.call($template, $resources)
           - $._environment.reporter.report($this, 'Plone Server is installed.')

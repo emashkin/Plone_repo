@@ -11,9 +11,11 @@ Name: Deploy Plone
 
 Parameters:
   pathname: $pathname
+  password: $password
+  port: $port
 
 Body: |
-  return ploneDeploy('{0}'.format(args.pathname)).stdout
+  return ploneDeploy('{0} {1} {2}'.format(args.pathname, args.password, args.port)).stdout
 
 Scripts:
   ploneDeploy:

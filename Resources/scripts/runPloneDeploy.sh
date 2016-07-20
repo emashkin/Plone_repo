@@ -11,25 +11,37 @@
 #  License for the specific language governing permissions and limitations
 #  under the License.
 
+PL_PATH="$1"
+PL_PASS="$2"
+PL_PORT="$3"
 exec &> /tmp/PloneInstallation.log
 
 echo "Hello world. Starting Pl one installation."
 echo "Current directory - "`cd "$( dirname "$0" )" && pwd`
-echo "Installing all packages."
+
+# echo "Installing all packages."
 sudo apt-get update
+
+# Install the operating system software and libraries needed to run Plone:
 sudo apt-get -y install python-setuptools python-dev build-essential libssl-dev libxml2-dev libxslt1-dev libbz2-dev libjpeg62-dev
+
+# Install optional system packages for handling of PDF and Office files. Can be omited
 sudo apt-get -y install libreadline-dev wv poppler-utils
 echo "Installing Plone."
 
+# Download the latest Plone unified installer:
 wget --no-check-certificate https://launchpad.net/plone/5.0/5.0.4/+download/Plone-5.0.4-UnifiedInstaller.tgz
 
+# Unzip the latest Plone unified installer:
 tar -xvf Plone-5.0.4-UnifiedInstaller.tgz && echo "Tgz unarchieved."
 cd Plone-5.0.4-UnifiedInstaller
-./install.sh --password="admin" --instance="test_instance" standalone
+
+# Run the Plone installer in standalone mode
+./install.sh --password="PL_PASS" --instance="test_instance" standalone
 
 echo "Starting up Plone."
+# Start Plone
 cd /opt/plone/test_instance/
 bin/plonectl start
 echo "Plone started."
-#sudo iptables -I INPUT 1 -p tcp -m tcp --dport 443 -j ACCEPT -m comment --comment "by murano, Apache server access on HTTPS port 443"
-#sudo iptables -I INPUT 1 -p tcp -m tcp --dport 80 -j ACCEPT -m comment --comment "by murano, Apache server access on HTTP port 80"
+
