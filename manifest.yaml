@@ -11,6 +11,9 @@ FullName: io.murano.apps.plone.PloneServer
 Name: Plone CMS
 Description: |
  The Ultimate Open Source Enterprise CMS.
+ This installer let you deploy Plone in  
+ standalone mode.
+ 
 Author: 'Evgeniy Mashkin'
 Tags: [CMS, WCM]
 Classes:
