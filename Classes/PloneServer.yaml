@@ -51,8 +51,8 @@ Methods:
               FromPort: 443
               IpProtocol: tcp
               External: true
-            - ToPort: 8080
-              FromPort: 8080
+            - ToPort: $.port
+              FromPort: $.port
               IpProtocol: tcp
               External: true  
           - $._environment.securityGroupManager.addGroupIngress($securityGroupIngress)
@@ -71,5 +71,5 @@ Methods:
               - $host: $.instance.floatingIpAddress
             Else:
               - $host: $.instance.ipAddresses[0]
-          - $._environment.reporter.report($this, format('Plone Server is available at http://{0}', $host))
+          - $._environment.reporter.report($this, format('Plone Server is available at http://{0}:{1}', $host, $.port))
           - $.setAttr(deployed, true)
