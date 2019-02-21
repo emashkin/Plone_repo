@@ -10,7 +10,7 @@ This repo contains simple example of murano application that installs
 
 Murano Plone Application is written during the following blog post series
 where you will find detailed step-by-step guide:
-* [**Day 1: What is Murano, and why do I need it?**](https://www.mirantis.com/blog/develop-cloud-applications-for-openstack-on-murano-part-1-what-is-murano-and-why-do-i-need-it/)\x
+* [**Day 1: What is Murano, and why do I need it?**](https://www.mirantis.com/blog/develop-cloud-applications-for-openstack-on-murano-part-1-what-is-murano-and-why-do-i-need-it/)\
 In this article, we’ll talk about what Murano is, who it helps, and how. We’ll also start with the basic concepts you need to understand and let you know what you’ll need for the rest of the series.
 * [**Day 2:  Creating the development environment**](https://www.mirantis.com/blog/how-to-develop-cloud-applications-for-openstack-using-murano-part-2-creating-the-development-environment/)\
 In this article, we’ll look at deploying an OpenStack cluster with Murano so that you’ve got the framework to work with.
