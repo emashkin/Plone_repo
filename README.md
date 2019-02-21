@@ -1,12 +1,12 @@
 # Murano Plone Application
 
-Murano is an OpenStack project that provides an application catalog, like
+[Murano](https://www.mirantis.com/software/application-catalog-murano/) is an [OpenStack](https://www.openstack.org/) project that provides an application catalog, like
 the AppStore for iOS or GooglePlay for Android. Murano lets you easily
 browse for cloud applications you need by their name or category, and then
 enables you to rapidly deploy them to the cloud with just a few clicks.
 
 This repo contains simple example of murano application that installs 
-Plone CMS on top of OpenStack using Murano egine.
+[Plone CMS](https://plone.org/) on top of OpenStack using Murano egine.
 
 Murano Plone Application is written during the following blog post series
 where you will find detailed step-by-step guide:
